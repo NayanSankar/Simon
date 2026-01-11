@@ -1,9 +1,33 @@
+
+let mob=0;
+let clicked=0;
+let meo=window.matchMedia("(max-width: 750px)").matches;
+if(meo){
+    $("h1").text("Tap to start!!!");
+    mob=1;
+}
 let tiles=[".green",".red",".yellow",".blue"];
 let start=1;
 let tobe=[];
 let level=1;
 let i=-1;
 let highest=0;
+if(mob==1){
+    $("body").on("click",function(){
+    if(start!=0 && clicked==0){
+        let ran=Math.floor(Math.random()*4);
+        i=-1;
+        let clr=$(tiles[ran]).css("background-color");
+        tobe.push(tiles[ran].slice(1,tiles[ran].length));
+        $(tiles[ran]).animate({backgroundColor:"black"},"fast");
+        $(tiles[ran]).animate({backgroundColor:clr},"fast");
+        $("h1").text("Level 1");
+        let audio=new Audio(tiles[ran].slice(1,tiles[ran].length)+".mp3");
+        audio.play();
+        start=0;
+        clicked=1;}
+});
+}
 $("body").on("keypress",function(){
     if(start!=0){
         let ran=Math.floor(Math.random()*4);
@@ -29,7 +53,14 @@ $(".tile").on("click",function(){
         if(i<tobe.length-1){
             if(tobe[i]!=this.classList[1]){
                 start=1;
-                $("h1").text("Failed!!! press A key to start again");
+                if(meo){
+                    console.log("hello");
+                    $("h1").text("Failed!!! tap to start again");
+                }
+                else{
+                    $("h1").text("Failed!!! press A key to start again");
+                }
+                
                 $("body").css("background-color","red");
                 setTimeout(function(){$("body").css("background-color","rgb(5, 51, 82)");},300);
                 let audio=new Audio("wrong.mp3");
@@ -43,6 +74,7 @@ $(".tile").on("click",function(){
                 i=-1;
                 tobe=[];
                 level=1;
+                setTimeout(function(){clicked=0;},100);
             }
         }
         else if(i==tobe.length-1){
@@ -63,7 +95,15 @@ $(".tile").on("click",function(){
             }
             else{
                 start=1;
-                $("h1").text("Failed!!! press A key to start again");
+                
+                if(meo){
+                    console.log("hello");
+                    $("h1").text("Failed!!! tap to start again");
+                }
+                else{
+                    $("h1").text("Failed!!! press A key to start again");
+                }
+                
                 $("body").css("background-color","red");
                 setTimeout(function(){$("body").css("background-color","rgb(5, 51, 82)");},300);
                 let audio=new Audio("wrong.mp3");
@@ -77,26 +117,9 @@ $(".tile").on("click",function(){
                 i=-1;
                 tobe=[];
                 level=1;
+                setTimeout(function(){clicked=0;},100);
             }
         }
-         
-
-        // if(tobe.slice(0,cur.length)!=cur){
-            // console.log(cur+tobe.slice(0,cur.length));
-            // start=1;
-            // $("h1").text("Failed!!! press A key to start again");
-        // }
-        // else if(tobe==cur){
-        //     level+=1;
-        //     $("h1").text("Level "+level);
-        //     let ran=Math.floor(Math.random()*4);
-        //     let clr=$(tiles[ran]).css("background-color");
-        //     tobe.push(tiles[ran].slice(1,tiles[ran].length));
-        //     $(tiles[ran]).animate({backgroundColor:"black"},"fast");
-        //     $(tiles[ran]).animate({backgroundColor:clr},"fast");
-        //     let audio=new Audio(tiles[ran].slice(1,tiles[ran].length)+".mp3");
-        //     audio.play();}
-
         }
     }
 );

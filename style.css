@@ -1,0 +1,70 @@
+.side{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    
+    
+}
+.level{
+    position: absolute;
+    bottom: 20px;
+}
+.msg{
+    height: 20%;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 20px;
+    color: antiquewhite;
+}
+h2{
+    height: 20%;
+    margin: 0px;
+    display: inline;
+    padding: 20px;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 20px;
+    color: antiquewhite;
+}
+h1{
+    padding: 20px;
+    margin: 0px;
+    text-align: center;
+    
+}
+body{
+    background-color: rgb(5, 51, 82);
+    height: 100vh;
+    margin: 0px;
+}
+.tiles{
+    width: 470px;
+}
+.tile{
+    
+    display: inline-block;
+    height: 190px;
+    width: 190px;
+    margin: 10px;
+    background-color: black;
+    border: solid 10px black;
+    border-radius: 40px;
+    
+}
+.red{
+    background-color: red;
+    
+}
+.green{
+    background-color: rgb(71, 255, 47);
+}
+.blue{
+    background-color: rgb(0, 89, 255);
+}
+.yellow{
+    background-color: yellow;
+}

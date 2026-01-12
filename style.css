@@ -7,6 +7,7 @@
     
     
 }
+
 .level{
     position: absolute;
     bottom: 20px;
@@ -67,4 +68,13 @@ body{
 }
 .yellow{
     background-color: yellow;
+}
+@media(max-width:500px){
+    .tile{
+        height: 150px;
+        width: 150px;
+    }
+    .tiles{
+        width: 390px;
+    }
 }
